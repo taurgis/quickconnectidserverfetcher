@@ -11,7 +11,13 @@ var server = http.createServer(function(req, resp) {
     resp.setHeader('Access-Control-Allow-Credentials', true);
 
     if (req.url === '/server.php') {
-        var x = request('https://global.quickconnect.to/Serv.php')
+        var x;
+        if (req.query && req.query.host) {
+            x = request('https' + host + '/Serv.php');
+        } else {
+            x = request('https://global.quickconnect.to/Serv.php')
+        }
+
         req.pipe(x)
         x.pipe(resp)
     }
