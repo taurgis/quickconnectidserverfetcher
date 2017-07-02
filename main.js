@@ -17,7 +17,7 @@ var server = http.createServer(function(req, resp) {
 
     if (req.url.indexOf('server.php') > 0) {
         var x;
-        if (query && query.host) {
+        if (query && query.host && query.host.endsWith('quickconnect.to')) {
             console.log('Sending request to: https://' + query.host + '/Serv.php')
             x = request('https://' + query.host + '/Serv.php');
         } else {
