@@ -13,8 +13,10 @@ var server = http.createServer(function(req, resp) {
     if (req.url === '/server.php') {
         var x;
         if (req.query && req.query.host) {
+            console.log('Sending request to: ' + 'https://' + host + '/Serv.php')
             x = request('https://' + host + '/Serv.php');
         } else {
+            console.log('Sending request to: https://global.quickconnect.to/Serv.php')
             x = request('https://global.quickconnect.to/Serv.php')
         }
 
