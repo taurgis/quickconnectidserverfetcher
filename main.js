@@ -5,6 +5,11 @@ var port = process.env.PORT || 8080;
 
 // Configure our HTTP server to respond with Hello World to all requests.
 var server = http.createServer(function(req, resp) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
     if (req.url === '/server.php') {
         var x = request('https://global.quickconnect.to/Serv.php')
         req.pipe(x)
